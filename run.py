@@ -3,9 +3,11 @@ average = lambda x: sum(x)/len(x) if len(x) > 0 else 0
 start = 0x2800
 char_width = 10
 char_height = 20
+sensitivity = 0.5
 char_width_divided = round(char_width / 2)
 char_height_divided = round(char_height / 4)
 filename = "../Pictures/Anthony Foxx official portrait.jpg"
+#filename = "../Pictures/2hu.png"
 base = Image.open(filename)
 def image_average(x1, y1, x2, y2):
     ret = []
@@ -27,7 +29,7 @@ for x in range(0, base.height - char_height - 1, char_height):
         for yn in range(2):
             for xn in range(4):
                 avg = image_average(x + (char_height_divided * xn), y + (char_width_divided * yn), x + (char_height_divided * (xn + 1)), y + (char_width_divided * (yn + 1)))
-                if avg > 127:
+                if avg > sensitivity * 0xFF:
                     byte += 2**convert_index(index)
                 index += 1
         print(chr(start + byte), end = "")
