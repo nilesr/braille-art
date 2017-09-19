@@ -2,7 +2,7 @@ from PIL import Image
 average = lambda x: sum(x)/len(x) if len(x) > 0 else 0
 start = 0x2800
 char_width = 10
-char_height = 20
+char_height = 10
 sensitivity = 0.5
 char_width_divided = round(char_width / 2)
 char_height_divided = round(char_height / 4)
@@ -22,13 +22,16 @@ def convert_index(x):
     if x == 5: return 4
     if x == 6: return 5
     if x == 7: return 7
-for x in range(0, base.height - char_height - 1, char_height):
-    for y in range(0, base.width - char_width - 1, char_width):
+for y in range(0, base.width - char_width - 1, char_width):
+    for x in range(0, base.height - char_height - 1, char_height):
         byte = 0x0
         index = 0
-        for yn in range(2):
-            for xn in range(4):
-                avg = image_average(x + (char_height_divided * xn), y + (char_width_divided * yn), x + (char_height_divided * (xn + 1)), y + (char_width_divided * (yn + 1)))
+        for xn in range(2):
+            for yn in range(4):
+                try:
+                    avg = image_average(x + (char_height_divided * xn), y + (char_width_divided * yn), x + (char_height_divided * (xn + 1)), y + (char_width_divided * (yn + 1)))
+                except:
+                    break
                 if avg > sensitivity * 0xFF:
                     byte += 2**convert_index(index)
                 index += 1
