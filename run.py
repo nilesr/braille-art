@@ -2,8 +2,8 @@ from PIL import Image
 import random
 average = lambda x: sum(x)/len(x) if len(x) > 0 else 0
 start = 0x2800
-char_width = 20
-char_height = 40
+char_width = 10
+char_height = 20
 dither = 20
 sensitivity = 0.5
 char_width_divided = round(char_width / 2)
