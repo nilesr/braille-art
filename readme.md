@@ -1,5 +1,5 @@
 ## Takes an image and turns it in to braille characters
-![](sample.png)
+<img src="https://raw.githubusercontent.com/nilesr/braille-art/master/sample.png" style="height: 200px; width: 200px;">
 ```
 ⣠⢞⠟⠁⣠⠔⠉⠉⠑⣤⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⢠⣇⡠⡴⠧⡶⢄⣀⣴⣁⣀⣀⣀⡤⠤⣀⣀⡀⢀⡤⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⠻⣿⣿⣿⣿⣿⣿⣿
