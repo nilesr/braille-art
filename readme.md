@@ -1,5 +1,6 @@
 ## Takes an image and turns it in to braille characters
 <img src="https://raw.githubusercontent.com/nilesr/braille-art/master/sample.png" height="200" width="235">
+
 ```
 ⣠⢞⠟⠁⣠⠔⠉⠉⠑⣤⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⢠⣇⡠⡴⠧⡶⢄⣀⣴⣁⣀⣀⣀⡤⠤⣀⣀⡀⢀⡤⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⠻⣿⣿⣿⣿⣿⣿⣿
