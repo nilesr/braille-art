@@ -2,15 +2,15 @@ from PIL import Image
 import random, sys
 average = lambda x: sum(x)/len(x) if len(x) > 0 else 0
 start = 0x2800
-char_width = 15
+char_width = 10
 char_height = char_width * 2
-dither = 0
-sensitivity = 0.5
+dither = 10
+sensitivity = 0.8
 char_width_divided = round(char_width / 2)
 char_height_divided = round(char_height / 4)
 filename = "../Pictures/Anthony Foxx official portrait.jpg"
 #filename = "../Pictures/bait k.jpg"
-#filename = "../nano.png"
+filename = "sample.png"
 base = Image.open(filename)
 match = lambda a, b: a < b if "--invert" in sys.argv else a > b
 def image_average(x1, y1, x2, y2):
