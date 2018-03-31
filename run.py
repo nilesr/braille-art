@@ -14,18 +14,9 @@ filename = "sample.png"
 base = Image.open(filename)
 match = lambda a, b: a < b if "--invert" in sys.argv else a > b
 def image_average(x1, y1, x2, y2):
-    ret = []
-    for x in range(x1, x2):
-        for y in range(y1, y2):
-            ret.append(average(base.getpixel((x, y))[:3]))
-    return average(ret)
+    return average([average(base.getpixel((x, y))[:3]) for x in range(x1, x2) for y in range(y1, y2)])
 def convert_index(x):
-    if x < 3: return x
-    if x == 3: return 6
-    if x == 4: return 3
-    if x == 5: return 4
-    if x == 6: return 5
-    if x == 7: return 7
+    return {3: 6, 4: 3, 5: 4, 6: 5}.get(x, x)
 for y in range(0, base.height - char_height - 1, char_height):
     for x in range(0, base.width - char_width - 1, char_width):
         byte = 0x0
