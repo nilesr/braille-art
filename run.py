@@ -9,7 +9,9 @@ parser = ap.ArgumentParser(description='Image to Braille conversion tool')
 parser.add_argument('input_file',
                     help='input file to convert',
                     type=pathlib.Path)
-                    #type=ap.FileType('r'))
+parser.add_argument("--invert",
+                    help='invert output',
+                    dest='invert', action='store_true')
 
 args = parser.parse_args();
 del parser
@@ -23,14 +25,9 @@ sensitivity = 0.8
 char_width_divided = round(char_width / 2)
 char_height_divided = round(char_height / 4)
 
-#filename = "../Pictures/Anthony Foxx official portrait.jpg"
-#filename = "../Pictures/bait k.jpg"
-#filename = "sample.png"
-
-#args.input_file.close()
-
 base = Image.open(args.input_file)
-match = lambda a, b: a < b if "--invert" in sys.argv else a > b
+match = lambda a, b: a < b if args.invert else a > b
+
 def image_average(x1, y1, x2, y2):
     return average([average(base.getpixel((x, y))[:3]) for x in range(x1, x2) for y in range(y1, y2)])
 def convert_index(x):
