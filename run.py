@@ -12,6 +12,14 @@ parser.add_argument('input_file',
 parser.add_argument("--invert",
                     help='invert output',
                     dest='invert', action='store_true')
+parser.add_argument('--dither', '-d',
+                    help='dither',
+                    type=int,
+                    default=10)
+parser.add_argument('--sensitivity', '-s',
+                     help="sensitivity",
+                     type=float,
+                     default=0.8)
 
 args = parser.parse_args();
 del parser
@@ -20,8 +28,8 @@ average = lambda x: sum(x)/len(x) if len(x) > 0 else 0
 start = 0x2800
 char_width = 10
 char_height = char_width * 2
-dither = 10
-sensitivity = 0.8
+dither = args.dither
+sensitivity = args.sensitivity
 char_width_divided = round(char_width / 2)
 char_height_divided = round(char_height / 4)
 
