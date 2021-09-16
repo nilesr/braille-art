@@ -1,13 +1,15 @@
 from PIL import Image
 import random, sys
 
+import pathlib
 import argparse as ap
 
 # Set up argument parser
 parser = ap.ArgumentParser(description='Image to Braille conversion tool')
 parser.add_argument('input_file',
                     help='input file to convert',
-                    type=ap.FileType('r'))
+                    type=pathlib.Path)
+                    #type=ap.FileType('r'))
 
 args = parser.parse_args();
 del parser
@@ -25,8 +27,9 @@ char_height_divided = round(char_height / 4)
 #filename = "../Pictures/bait k.jpg"
 #filename = "sample.png"
 
-args.input_file.close()
-base = Image.open(args.input_file.name)
+#args.input_file.close()
+
+base = Image.open(args.input_file)
 match = lambda a, b: a < b if "--invert" in sys.argv else a > b
 def image_average(x1, y1, x2, y2):
     return average([average(base.getpixel((x, y))[:3]) for x in range(x1, x2) for y in range(y1, y2)])
