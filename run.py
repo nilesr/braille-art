@@ -6,32 +6,38 @@ import random
 
 from PIL import Image
 
-#------------------------------------------------------------------------------
+###############################################################################
 # Functions
+
 
 def average(x):
     return sum(x) / len(x) if len(x) > 0 else 0
 
+
 def image_average(image, x1, y1, x2, y2):
     lx = []
     for x in range(x1, x2):
-        ly = []
         for y in range(y1, y2):
             lx += [average(base.getpixel((x, y))[:3])]
-        lx += [average(lx)]
     return average(lx)
+
 
 def convert_index(x):
     return {3: 6, 4: 3, 5: 4, 6: 5}.get(x, x)
 
-def match (a, b):
+
+def match(a, b):
     return a < b if args.invert else a > b
 
-#------------------------------------------------------------------------------
+
+###############################################################################
 # Implementation
 
 # Set up argument parser
+
+
 parser = argparse.ArgumentParser(description='Image to Braille conversion tool')
+
 
 parser.add_argument('input_file', help='input file to convert', type=pathlib.Path)
 parser.add_argument(
@@ -63,8 +69,8 @@ for y in range(0, base.height - char_height - 1, char_height):
                                     x + (char_height_divided * xn),
                                     y + (char_width_divided * yn),
                                     x + (char_height_divided * (xn + 1)),
-                                    y + (char_width_divided * (yn + 1))
-                )
+                                    y + (char_width_divided * (yn + 1)))
+
                 if match(avg + random.randint(-dither, dither), sensitivity * 0xFF):
                     byte += 2**convert_index(index)
                 index += 1
