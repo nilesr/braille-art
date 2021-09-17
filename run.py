@@ -1,18 +1,41 @@
 from PIL import Image
 import random, sys
+
+import pathlib
+import argparse as ap
+
+# Set up argument parser
+parser = ap.ArgumentParser(description='Image to Braille conversion tool')
+parser.add_argument('input_file',
+                    help='input file to convert',
+                    type=pathlib.Path)
+parser.add_argument("--invert",
+                    help='invert output',
+                    dest='invert', action='store_true')
+parser.add_argument('--dither', '-d',
+                    help='dither',
+                    type=int,
+                    default=10)
+parser.add_argument('--sensitivity', '-s',
+                     help="sensitivity",
+                     type=float,
+                     default=0.8)
+
+args = parser.parse_args();
+del parser
+
 average = lambda x: sum(x)/len(x) if len(x) > 0 else 0
 start = 0x2800
 char_width = 10
 char_height = char_width * 2
-dither = 10
-sensitivity = 0.8
+dither = args.dither
+sensitivity = args.sensitivity
 char_width_divided = round(char_width / 2)
 char_height_divided = round(char_height / 4)
-filename = "../Pictures/Anthony Foxx official portrait.jpg"
-#filename = "../Pictures/bait k.jpg"
-filename = "sample.png"
-base = Image.open(filename)
-match = lambda a, b: a < b if "--invert" in sys.argv else a > b
+
+base = Image.open(args.input_file)
+match = lambda a, b: a < b if args.invert else a > b
+
 def image_average(x1, y1, x2, y2):
     return average([average(base.getpixel((x, y))[:3]) for x in range(x1, x2) for y in range(y1, y2)])
 def convert_index(x):
