@@ -6,20 +6,13 @@ from PIL import Image
 
 # Set up argument parser
 parser = argparse.ArgumentParser(description='Image to Braille conversion tool')
-parser.add_argument('input_file',
-                    help='input file to convert',
-                    type=pathlib.Path)
-parser.add_argument("--invert",
-                    help='invert output',
-                    dest='invert', action='store_true')
-parser.add_argument('--dither', '-d',
-                    help='dither',
-                    type=int,
-                    default=10)
-parser.add_argument('--sensitivity', '-s',
-                     help="sensitivity",
-                     type=float,
-                     default=0.8)
+
+parser.add_argument('input_file', help='input file to convert', type=pathlib.Path)
+parser.add_argument(
+  "--invert", help='invert output', dest='invert', action='store_true'
+)
+parser.add_argument('--dither', '-d', help='dither', type=int, default=10)
+parser.add_argument('--sensitivity', '-s', help="sensitivity", type=float, default=0.8)
 
 args = parser.parse_args()
 del parser
